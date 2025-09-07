@@ -1,0 +1,35 @@
+{
+  "name": "cadbook",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ./src/**/*.ts"
+  },
+  "keywords": [
+    "typescript",
+    "data-analysis",
+    "tslab",
+    "jupyter",
+    "notebook",
+    "visualization"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "A TypeScript library for data analysis and visualization, designed for use with TSLab notebooks",
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "opencascade.js": "^2.0.0-beta.b5ff984",
+    "tslab": "^1.0.22",
+    "typescript": "^5.8.3"
+  }
+}

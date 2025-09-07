@@ -1,0 +1,99 @@
+export const DXF_TEMPLATE = `  0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1009
+  9
+$EXTMAX
+ 10
+@@maxx
+ 20
+@@maxy
+ 30
+0.0
+  9
+$EXTMIN
+ 10
+@@minx
+ 20
+@@miny
+ 30
+0.0
+  9
+$INSUNITS
+ 70
+@@UNITS
+  9
+$LUNITS
+ 70
+     2
+  9
+$LUPREC
+ 70
+     4
+  9
+$MEASUREMENT
+ 70
+     1
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+LAYER
+ 70
+     1
+  0
+LAYER
+  2
+0
+ 70
+     0
+ 62
+     7
+  6
+Continuous
+  0
+LAYER
+  2
+Defpoints
+ 70
+     0
+ 62
+     7
+  6
+Continuous
+  0
+ENDTAB
+  0
+TABLE
+  2
+APPID
+ 70
+     1
+  0
+APPID
+  2
+ACAD
+ 70
+     0
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+@@ENTITIES
+  0
+ENDSEC
+  0
+EOF`;
