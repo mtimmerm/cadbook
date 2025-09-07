@@ -11,7 +11,7 @@ First off, let me apologize:
 
 3. There is no support.  I thank you for any bug reports, but I'm not gonna be in a hurry to fix them.  There are only two reasons why this project is public OSS:
 
-   1. There doesn't seem to be anything else like this out there right now -- sketch-based CAD via programming, with a *real* BREP CAD engine that you can use to make real parts.  Therefore I though that others might find it useful even with all these limitations.
+   1. There doesn't seem to be anything else like this out there right now -- sketch-based CAD via programming, with a *real* BREP CAD engine that you can use to make real parts.  Therefore I thought that others might find it useful even with all these limitations.
 
    2. It would be nice if others would contribute.  I am happy to consider PRs.
 
