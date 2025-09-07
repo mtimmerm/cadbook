@@ -9,7 +9,7 @@ First off, let me apologize:
 
 2. It still sucks.  I made this for me so I could design parts and easily tweak them iteratively.  It doesn't do everything you want.  I will only add features or improvements when I need them.  But... you're a coder, right?  I am happy to consider PRs.
 
-3. There is no support.  I think you for any bug reports, but I'm not gonna be in a hurry to fix them.  There are only two reasons why this project is public OSS:
+3. There is no support.  I thank you for any bug reports, but I'm not gonna be in a hurry to fix them.  There are only two reasons why this project is public OSS:
 
    1. There doesn't seem to be anything else like this out there right now -- sketch-based CAD via programming, with a *real* BREP CAD engine that you can use to make real parts.  Therefore I though that others might find it useful even with all these limitations.
 
