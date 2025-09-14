@@ -64,3 +64,6 @@ Thumbs.db
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# Claude Code
+CLAUDE.md

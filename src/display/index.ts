@@ -3,11 +3,13 @@ import { OCPromise, ShaperProps } from '../oc/index.js';
 import { displayPart, PartExportFormat } from './displayPart.js';
 import { Memoizer, OCMemoizer } from './memoizer.js';
 import { SvgRecorder, SvgRenderProps } from './svg.js';
+import { getFileServer } from './fileServer.js';
 import * as tslab from 'tslab';
 
 export { SvgRenderProps } from './svg.js';
 export { Memoizer } from './memoizer.js';
 export type { PartExportFormat } from './displayPart.js';
+export { FileServer, getFileServer, resetFileServer } from './fileServer.js';
 
 export interface CadDisplay {
   /**
@@ -28,13 +30,16 @@ export async function getDisplay(
   shaperProps: ShaperProps
 ): Promise<CadDisplay> {
   const oc = await OCPromise;
+  const fileServer = await getFileServer();
   return {
-    part: (part: Part, exports) => displayPart(oc, shaperProps, part, exports),
+    part: (part: Part, exports) => displayPart(oc, fileServer, shaperProps, part, exports),
     sketch: (sketch: Sketch) => {
       const recorder = new SvgRecorder(svgProps);
       recorder.draw(sketch);
-      const text = recorder.getSvgText();
-      tslab.display.html(`<div>${text}</div>`);
+      const svgText = recorder.getSvgText();
+      const svgBuffer = Buffer.from(svgText, 'utf8');
+      const svgUrl = fileServer.storeFile(svgBuffer, 'image/svg+xml');
+      tslab.display.html(`<div><img src="${svgUrl}" style="max-width: 100%; height: auto; max-height: 300px" /></div>`);
     },
   };
 }

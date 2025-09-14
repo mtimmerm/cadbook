@@ -7,18 +7,21 @@ import {
 } from '../oc/index.js';
 import * as tslab from 'tslab';
 import { exportMeshToSTL } from '../oc/stlExport.js';
+import { FileServer } from './fileServer.js';
 
 export type PartExportFormat = 'STLA' | 'STLB' | 'GLB';
 
 /**
  * Display and optionally export a 3D part in the notebook cell output.
  * @param oc
+ * @param fileServer
  * @param props
  * @param part
  * @param exportFormats
  */
 export function displayPart(
   oc: OpenCascadeInstance,
+  fileServer: FileServer,
   props: ShaperProps,
   part: Part,
   exportFormats?: Partial<Record<PartExportFormat, string>>
@@ -32,8 +35,9 @@ export function displayPart(
   }
 
   const glbData = exportShapesToGLB(oc, [mesh]);
-  const glbBase64 = glbData.toString('base64');
-  const glbUrl = `data:model/gltf-binary;base64,${glbBase64}`;
+  
+  const glbUrl = fileServer.storeFile(glbData, 'model/gltf-binary');
+  
   const contentParts: string[] = [
     `<div>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
@@ -65,8 +69,7 @@ export function displayPart(
       continue;
     }
     if (!url) {
-      const base64String = data.toString('base64');
-      url = `data:${mime};base64,${base64String}`;
+      url = fileServer.storeFile(data, mime, filename);
     }
     contentParts.push(
       `<div><a href="${url}" download="${filename}" type="${mime}">${filename}</a></div>`
